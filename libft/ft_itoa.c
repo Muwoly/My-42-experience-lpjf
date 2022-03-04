@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 15:59:54 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/03 22:37:51 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/04 17:07:53 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,11 @@ static void	putnbr(char *ret, int i, int n)
 
 	if (n > 0)
 	{
+		i--;
 		putnbr(ret, i, n / 10);
 		p = (n % 10);
-		ret[i] = p;
-		i--;
-		printf("%i\n", ret[i]);
+		ret[i] = p + 48;
 	}
-	
-	// if (n == 0)
-	// 	ret[i] = (n % 10) + 48;
 }
 
 char	*ft_itoa(int n)
@@ -61,7 +57,7 @@ char	*ft_itoa(int n)
 	{
 		ret = (char *) malloc(i + 2);
 		ret[0] = '-';
-		putnbr(ret, i, n * -1);
+		putnbr(ret, i + 1, n * -1);
 		ret[i + 1] = '\0';
 	}
 	else

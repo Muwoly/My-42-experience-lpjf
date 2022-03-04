@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 13:06:49 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/03 22:26:00 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/04 17:06:40 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -866,15 +866,13 @@ void	split_test(void)
 void	itoa_test(void)
 {
 	printf("%s\n", ft_itoa(-505));
-	// printf("%s\n", ft_itoa(0));
-	// printf("%s\n", ft_itoa(1));
-	// printf("%s\n", ft_itoa(-1));
-	// printf("%s\n", ft_itoa(110));
-	// printf("%s\n", ft_itoa(999));
-	// ft_itoa(-999);
-	// ft_itoa(2147483647);
-	// ft_itoa(-2147483647);
-	// printf("%s\n", ft_itoa(-2147483648));
+	printf("%s\n", ft_itoa(0));
+	printf("%s\n", ft_itoa(1));
+	printf("%s\n", ft_itoa(-1));
+	printf("%s\n", ft_itoa(110));
+	printf("%s\n", ft_itoa(999));
+	printf("%s\n", ft_itoa(-2147483648));
+	printf("%s\n", ft_itoa(2147483647));
 }
 
 void	strmapi_test(void)
