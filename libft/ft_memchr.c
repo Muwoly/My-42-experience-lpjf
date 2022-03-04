@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 13:29:30 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/02/20 18:17:44 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:42:37 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 void	*ft_memchr(const void *b, int c, size_t len)
 {
-	int		i;
-	char	*s;
+	size_t		i;
 
 	i = 0;
-	s = (char *) b;
-	if ((int) len == 0)
-		return (0);
-	while (s[i] && i < (int) len)
+	while (i < len)
 	{
-		if (s[i] == c)
-			return ((char *) &s[i]);
+		if (*(char *)(b + i) == (char)c)
+			return ((void *)(b + i));
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

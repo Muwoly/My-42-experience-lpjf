@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 13:06:49 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/04 17:06:40 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:06:50 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,9 @@ int	main(void)
 	// strncmp_test();
 	// press_enter();
 
-	// clear();
-	// memchr_test();
-	// press_enter();
+	clear();
+	memchr_test();
+	press_enter();
 
 	// clear();
 	// memcmp_test();
@@ -168,9 +168,9 @@ int	main(void)
 	// split_test();
 	// press_enter();
 
-	clear();
-	itoa_test();
-	press_enter();
+	// clear();
+	// itoa_test();
+	// press_enter();
 
 	// clear();
 	// strmapi_test();
