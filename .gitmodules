@@ -1,0 +1,3 @@
+[submodule "libft/libftTester"]
+	path = libft/libftTester
+	url = https://github.com/Tripouille/libftTester.git
