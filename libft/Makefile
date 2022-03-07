@@ -5,11 +5,10 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/04 17:50:08 by lpenelon          #+#    #+#              #
-#    Updated: 2022/03/04 17:50:12 by lpenelon         ###   ########.fr        #
+#    Created: 2022/03/07 14:54:38 by lpenelon          #+#    #+#              #
+#    Updated: 2022/03/07 14:54:39 by lpenelon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_strlcat.c ft_strncmp.c ft_substr.c ft_atoi.c ft_isalpha.c \
@@ -49,4 +48,3 @@ re:				fclean $(NAME)
 
 bonus:			$(OBJS) $(BONUS_OBJS)
 				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-

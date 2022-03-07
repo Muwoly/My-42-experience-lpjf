@@ -128,13 +128,13 @@ int	main(void)
 	// strncmp_test();
 	// press_enter();
 
-	clear();
-	memchr_test();
-	press_enter();
-
 	// clear();
-	// memcmp_test();
+	// memchr_test();
 	// press_enter();
+
+	clear();
+	memcmp_test();
+	press_enter();
 
 	// clear();	
 	// strnstr_test();
@@ -660,35 +660,39 @@ void	memchr_test(void)
 void	memcmp_test(void)
 {
 	printf("memcmp:\n");
-	printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 10));
-	printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 10));
+	printf("%i\n", memcmp("001270", "00420", 4));
+	printf("%i\n\n", ft_memcmp("001270", "00420", 4));
 
-	printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 50));
-	printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 50));
+	// printf("memcmp:\n");
+	// printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 10));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 10));
 
-	printf("%i\n", memcmp("Ultimate 4st", "Ultimate t4st", 5));
-	printf("%i\n\n", ft_memcmp("Ultimate 4st", "Ultimate t4st", 5));
+	// printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 50));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 50));
 
-	printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 13));
-	printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 13));
+	// printf("%i\n", memcmp("Ultimate 4st", "Ultimate t4st", 5));
+	// printf("%i\n\n", ft_memcmp("Ultimate 4st", "Ultimate t4st", 5));
 
-	printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 12));
-	printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 12));
+	// printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 13));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 13));
 
-	printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 0));
-	printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 0));
+	// printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 12));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 12));
 
-	printf("%i\n", memcmp("Ultimate t4s", "Ultimate t4st", 13));
-	printf("%i\n\n", ft_memcmp("Ultimate t4s", "Ultimate t4st", 13));
+	// printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4st", 0));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4st", 0));
 
-	printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4s", 13));
-	printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4s", 13));
+	// printf("%i\n", memcmp("Ultimate t4s", "Ultimate t4st", 13));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4s", "Ultimate t4st", 13));
 
-	printf("%i\n", memcmp("Ultimate t4st", "Ultimte t4st", 50));
-	printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimte t4st", 50));
+	// printf("%i\n", memcmp("Ultimate t4st", "Ultimate t4s", 13));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimate t4s", 13));
+
+	// printf("%i\n", memcmp("Ultimate t4st", "Ultimte t4st", 50));
+	// printf("%i\n\n", ft_memcmp("Ultimate t4st", "Ultimte t4st", 50));
 	
-	printf("%i\n", memcmp("Ultimte t4st", "Ultimate t4st", 50));
-	printf("%i\n\n", ft_memcmp("Ultimte t4st", "Ultimate t4st", 50));
+	// printf("%i\n", memcmp("Ultimte t4st", "Ultimate t4st", 50));
+	// printf("%i\n\n", ft_memcmp("Ultimte t4st", "Ultimate t4st", 50));
 }
 
 void	strnstr_test(void)

@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:28:04 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/07 13:38:03 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:30:07 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,15 @@
 int	ft_memcmp(const void *b1, const void *b2, size_t len)
 {
 	size_t		i;
-	char		*s1;
-	char		*s2;
 
 	i = 0;
-	s1 = (char *) b1;
-	s2 = (char *) b2;
-	if (len == 0)
-		return (0);
-	while (s1[i] && s2[i] && i < len)
+	while (i < len)
 	{
-		if (s1[i] > s2[i])
+		if (*(unsigned char *)(b1 + i) > *(unsigned char *)(b2 + i))
 			return (1);
-		else if (s1[i] < s2[i])
+		else if (*(unsigned char *)(b1 + i) < *(unsigned char *)(b2 + i))
 			return (-1);
 		i++;
 	}
-	if (s1[i] && s2[i])
-		return (0);
-	else if (s1[i])
-		return (1);
-	else if (s2[i])
-		return (-1);
-	else
-		return (0);
+	return (0);
 }
-
-// {
-// 	size_t		i;
-// 	char		*s1;
-// 	char		*s2;
-
-// 	i = 0;
-// 	s1 = (char *) b1;
-// 	s2 = (char *) b2;
-// 	while (s1[i] && s2[i] && i < len)
-// 	{
-// 		if (s1[i] > s2[i])
-// 			return (1);
-// 		else if (s1[i] < s2[i])
-// 			return (-1);
-// 		i++;
-// 	}
-// 	if (s1[i] && s2[i])
-// 		return (0);
-// 	else if (s1[i])
-// 		return (1);
-// 	else if (s2[i])
-// 		return (-1);
-// 	else
-// 		return (0);
-// }
