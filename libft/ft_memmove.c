@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:28:04 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/02/25 11:03:07 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:18:19 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,32 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*dst1;
-	char	*src1;
-	int		len1;
-	int		i;
+	size_t		i;
+	char		*dst1;
+	const char	*src1;
+	char		*lastdst;
+	const char	*lastsrc;
 
-	dst1 = (char *) dst;
-	src1 = (char *) src;
-	len1 = (int) len;
 	i = 0;
-	while (src1[i] && i < len1)
-		i++;
-	printf("%i\n", i);
-	if (len1 > i)
-	{
-		len1 = i;
-		while (len1 >= 0)
+	dst1 = dst;
+	src1 = src;
+	if (!dst && !src)
+		return (NULL);
+	if (dst1 < src1)
+		while (len--)
 		{
-			dst1[len1] = src1[len1];
-			len1--;
-//			printf("%s\n", dst);
+			dst1[i] = src1[i];
+			i++;
 		}
-		dst1[i] = '\0';
-	}
 	else
 	{
-		while (len1 >= 0)
+		lastsrc = (char *)src1 + (len - 1);
+		lastdst = dst1 + (len - 1);
+		while (len--)
 		{
-			dst1[len1] = src1[len1];
-			len1--;
+			lastdst[i] = lastsrc[i];
+			i++;
 		}
-		dst1[i] = '\0';
 	}
 	return (dst);
 }

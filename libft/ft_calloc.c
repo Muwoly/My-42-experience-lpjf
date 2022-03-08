@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 11:29:28 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/02/25 10:57:28 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:01:33 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,11 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	**ret;
-	int		i;
+	void		*ret;
 
-	ret = (void **) malloc(nmemb);
+	ret = (void *) malloc(nmemb * size);
 	if (ret == NULL)
 		return (NULL);
-	i = 0;
-	while (i < (int) nmemb)
-	{
-		ret = (void *) malloc(size);
-		ft_memcpy(ret[i], 0, 1);
-		i++;
-	}
+	ft_bzero(ret, nmemb * size);
 	return (ret);
 }

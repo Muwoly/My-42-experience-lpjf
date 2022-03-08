@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 17:59:34 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/02/20 18:18:09 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:18:22 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		return (ft_strlen(src));
 	while (src[i] != '\0' && n < (int) dstsize - 1)
 	{
-		dst[n] = src[i];
-		n++;
-		i++;
+		dst[n++] = src[i++];
 	}
 	dst[n] = '\0';
 	return (dstcnt + ft_strlen(src));
