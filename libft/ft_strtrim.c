@@ -6,27 +6,52 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:01:13 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/02/26 12:05:13 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:54:23 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	count_to_trim(char const *s1, char const *set)
+{
+	size_t	i;
+	size_t	j;
+	size_t	ret;
+
+	i = 0;
+	ret = 0;
+	while (i < ft_strlen(s1))
+	{
+		j = 0;
+		while (j < ft_strlen(set))
+		{
+			if (s1[i] == set[j])
+			{
+				ret++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (ret);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ret;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
-	ret = (char *) malloc(ft_strlen(s1) - ft_strlen(set) + 1);
+	
+	ret = (char *) malloc(ft_strlen(s1) - count_to_trim(s1, set) + 1);
 	if (ret == NULL)
 		return (NULL);
 	ft_strlcpy(ret, s1, ft_strlen(s1) + 1);
 	i = 0;
-	while (i < (int) ft_strlen(s1))
+	while (i < ft_strlen(s1))
 	{
 		j = 0;
-		while (j < (int) ft_strlen(set))
+		while (j < ft_strlen(set))
 		{
 			if (ret[i] == set[j])
 			{
@@ -37,5 +62,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		}
 		i++;
 	}
+	ret[i] = '\0';
 	return (ret);
 }
