@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:09:35 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/09 17:50:58 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:41:30 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,14 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	k = 0;
 	ret = (char **) malloc(sizeof(char *) * (nbr_of_malloc(s, c) + 1));
-	while (s[i])
+	while (i < ft_strlen(s) + 1)
 	{
 		while (s[i] == c)
 			i++;
 		ret[j] = (char *) malloc(sizeof(char) * (size_until_next_c(s + i, c) + 1));
-		ret[j][size_until_next_c(s + i, c)] = '\0';
 		if (s[i] == '\0')
 		{
-			// printf("\n%s\n", ret[0]);
+			// printf("\n%s\n", ret[1]);
 			ret[j] = NULL;
 			return (ret);
 		}
@@ -74,12 +73,18 @@ char	**ft_split(char const *s, char c)
 			i++;
 			k++;
 		}
+		ret[j][k] = '\0';
 		j++;
 		k = 0;
+		// printf("\n%zu\n", i);
+		// printf("\n%zu\n", ft_strlen(s));
 	}
 	return (ret);
 }
 
+
+
+// char	**ft_split(char const *s, char c)
 // {
 // 	size_t	i;
 // 	char	**ret;

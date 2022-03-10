@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 15:59:54 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/04 17:07:53 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/10 13:50:33 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,25 @@ char	*ft_itoa(int n)
 	i = count_nb(n);
 	if (n == -2147483648)
 	{
-		ret = (char *) malloc(12);
+		ret = (char *) malloc(sizeof(char) * 12);
 		if (ret == NULL)
 			return (NULL);
 		ret = "-2147483648";
 	}
 	else if (n < 0)
 	{
-		ret = (char *) malloc(i + 2);
+		ret = (char *) malloc(sizeof(char) * (i + 2));
+		if (ret == NULL)
+			return (NULL);
 		ret[0] = '-';
 		putnbr(ret, i + 1, n * -1);
 		ret[i + 1] = '\0';
 	}
 	else
 	{
-		ret = (char *) malloc(i + 1);
+		ret = (char *) malloc(sizeof(char) * (i + 1));
+		if (ret == NULL)
+			return (NULL);
 		putnbr(ret, i, n);
 		ret[i] = '\0';
 	}
