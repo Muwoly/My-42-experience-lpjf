@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 14:59:56 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/11 11:04:21 by lpenelon         ###   ########.fr       */
+/*   Created: 2022/03/11 12:18:02 by lpenelon          #+#    #+#             */
+/*   Updated: 2022/03/11 14:19:41 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list  *ft_lstnew(void *content)
+t_list *ft_lstlast(t_list *lst)
 {
-    t_list *node;
-
-    node = malloc(sizeof(t_list));
-    if (!node)
-        return (NULL);
-    node->content = content;
-    node->next = NULL;
-    return (node);
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }
 
-// malloc() always returns a pointer of type void *
+// {
+// 	t_list temp;
+
+// 	if (!lst)
+// 		return (NULL);
+// 	temp.next = lst;
+// 	while (temp.next -> next != NULL)
+// 	{
+// 		temp.next = temp.next -> next;
+// 	}
+// 	return (temp.next);
+// }

@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 14:59:56 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/11 11:04:21 by lpenelon         ###   ########.fr       */
+/*   Created: 2022/03/11 14:36:45 by lpenelon          #+#    #+#             */
+/*   Updated: 2022/03/11 14:56:21 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list  *ft_lstnew(void *content)
+void ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-    t_list *node;
-
-    node = malloc(sizeof(t_list));
-    if (!node)
-        return (NULL);
-    node->content = content;
-    node->next = NULL;
-    return (node);
+	del(lst->content);
+	free(lst);
 }
-
-// malloc() always returns a pointer of type void *

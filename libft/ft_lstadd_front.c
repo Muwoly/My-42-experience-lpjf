@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 18:24:31 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/10 19:28:36 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:38:51 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void ft_lstadd_front(t_list **lst, t_list *new)
 {
+	new->next = *lst;
 	*lst = new;
 }
