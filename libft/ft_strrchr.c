@@ -36,10 +36,8 @@ static int	check_after(char *s)
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	len;
 	int	i;
 
-	len = ft_strlen(s);
 	i = 0;
 	while (s[i])
 	{
