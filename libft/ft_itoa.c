@@ -51,7 +51,7 @@ char	*ft_itoa(int n)
 		ret = (char *) malloc(sizeof(char) * 12);
 		if (ret == NULL)
 			return (NULL);
-		ret = "-2147483648";
+		ft_strlcpy(ret, "-2147483648", 12);
 	}
 	else if (n < 0)
 	{
@@ -61,6 +61,13 @@ char	*ft_itoa(int n)
 		ret[0] = '-';
 		putnbr(ret, i + 1, n * -1);
 		ret[i + 1] = '\0';
+	}
+	else if (n == 0)
+	{
+		ret = (char *) malloc(sizeof(char) * 2);
+		if (ret == NULL)
+			return (NULL);
+		ft_strlcpy(ret, "0", 2);
 	}
 	else
 	{
