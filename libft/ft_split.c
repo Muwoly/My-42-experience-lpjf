@@ -24,12 +24,17 @@ static size_t	nbr_of_malloc(char const *s, char c)
 		while (s[i] != c)
 		{
 			i++;
-			if (s[i] == c && s[i] == '\0')
+			if (s[i] == c || s[i] == '\0')
+			{
 				j++;
+//				printf("\n%li\n", j);
+				break;
+			}
 		}
-		i++;
+		if (s[i] == c)
+			i++;
 	}
-	// printf("\n%i\n", j);
+//	printf("\n%li\n", j);
 	return (j);
 }
 
@@ -40,7 +45,7 @@ static size_t	size_until_next_c(char const *s, char c)
 	i = 0;
 	while (s[i] != c && s[i])
 		i++;
-	// printf("\n%zu\n", i);
+//	printf("\n%zu\n", i);
 	return (i);
 }
 
@@ -55,11 +60,17 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	k = 0;
 	ret = (char **) malloc(sizeof(char *) * (nbr_of_malloc(s, c) + 1));
+	if (ret == NULL)
+		return NULL;
+	printf("\n%li\n", nbr_of_malloc(s, c));
 	while (i < ft_strlen(s) + 1)
 	{
 		while (s[i] == c)
 			i++;
 		ret[j] = (char *) malloc(sizeof(char) * (size_until_next_c(s + i, c) + 1));
+		if (ret[j] == NULL)
+			return NULL;
+		printf("\n%li\n", size_until_next_c(s + i, c));
 		if (s[i] == '\0')
 		{
 			// printf("\n%s\n", ret[1]);

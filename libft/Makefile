@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+         #
+#    By: loris <loris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/07 14:54:38 by lpenelon          #+#    #+#              #
-#    Updated: 2022/03/11 15:27:41 by lpenelon         ###   ########.fr        #
+#    Updated: 2022/03/14 19:04:20 by loris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,8 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 OBJS			= $(SRCS:.c=.o)
 
 BONUS			=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-					ft_lstadd_back.c ft_lstdelone.c 
-					# ft_lstiter.c ft_lstclear.c
-					# ft_lstmap.c 
+					ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+					ft_lstmap.c 
 
 BONUS_OBJS		= $(BONUS:.c=.o)
 
