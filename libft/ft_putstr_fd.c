@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:33:29 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/02 15:52:39 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:42:08 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (i < s[i])
+	if (!s)
+		return ;
+	while (i < ft_strlen(s))
 	{
-		ft_putchar_fd(s[i], fd);
+		ft_putchar_fd(*(s + i), fd);
 		i++;
 	}
 }

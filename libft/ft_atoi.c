@@ -6,17 +6,17 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:11:10 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/08 13:50:34 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:31:56 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	nbr;
-	int	minus;
+	int			i;
+	long long	nbr;
+	int			minus;
 
 	i = 0;
 	nbr = 0;
@@ -29,14 +29,12 @@ int	ft_atoi(const char *nptr)
 			minus *= -1 ;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nbr = (nbr * 10) + nptr[i] - 48;
 		i++;
 	}
-	if (minus < 0)
-		nbr *= minus;
-	return (nbr);
+	return (nbr * minus);
 }
 // {
 // 	int	i;

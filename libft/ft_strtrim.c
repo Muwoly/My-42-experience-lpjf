@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:01:13 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/14 19:31:18 by loris            ###   ########.fr       */
+/*   Updated: 2022/03/15 19:22:26 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	size_t	j;
 
+	if (!s1 || !set)
+		return (0);
 	ret = (char *) malloc(ft_strlen(s1) - count_to_trim(s1, set) + 1);
 	if (ret == NULL)
 		return (NULL);

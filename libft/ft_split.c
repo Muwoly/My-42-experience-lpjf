@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:09:35 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/14 19:28:41 by loris            ###   ########.fr       */
+/*   Updated: 2022/03/15 18:07:42 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,34 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	k = 0;
-	ret = (char **) malloc(sizeof(char *) * (nbr_of_malloc(s, c) + 1));
+	if (!s)
+		return NULL;
+	if (c == 0)
+	{
+		ret = (char **) malloc(sizeof(char *) * 2);
+		ret[0] = ft_strdup(s);
+		ret[1] = (char *) malloc(sizeof(char));
+		ret[1] = NULL;
+		return (ret);
+	}
+	ret = (char **) ft_calloc(sizeof(char *), ((nbr_of_malloc(s, c) + 1)));
 	if (ret == NULL)
 		return NULL;
-	printf("\n%li\n", nbr_of_malloc(s, c));
+//	printf("\n%li\n", nbr_of_malloc(s, c) + 1);
 	while (i < ft_strlen(s) + 1)
 	{
 		while (s[i] == c)
 			i++;
+//		printf("\n%li\n", size_until_next_c(s + i, c) + 1);
+		if (s[i] == '\0')
+		{
+	//		printf("\n%s\n", ret[0]);
+	//		ret[j] = NULL;
+			return (ret);
+		}
 		ret[j] = (char *) malloc(sizeof(char) * (size_until_next_c(s + i, c) + 1));
 		if (ret[j] == NULL)
 			return NULL;
-		printf("\n%li\n", size_until_next_c(s + i, c));
-		if (s[i] == '\0')
-		{
-			// printf("\n%s\n", ret[1]);
-			ret[j] = NULL;
-			return (ret);
-		}
 		while (s[i] != c)
 		{
 			ret[j][k] = (char)s[i];

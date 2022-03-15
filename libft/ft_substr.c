@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 11:03:51 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/09 14:50:43 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:28:32 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
 
+	if (!s)
+		return (NULL);
 	if (start > len || start > ft_strlen(s))
 	{
 		substr = (char *)malloc(sizeof(char));

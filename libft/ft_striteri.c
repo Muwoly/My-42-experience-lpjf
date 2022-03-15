@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:27:08 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/10 14:26:50 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:11:37 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	unsigned int		j;
 
 	i = 0;
-	j = ft_strlen(s);
-	while (i < j)
+	j = 0;
+	if (s != NULL && f != NULL)
 	{
-		f(i, s);
-		s++;
-		i++;
+		j = ft_strlen(s);
+		while (i < j)
+		{
+			f(i, s);
+			s++;
+			i++;
+		}
 	}
 }
