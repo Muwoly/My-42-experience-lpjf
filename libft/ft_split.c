@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:09:35 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/16 19:20:50 by loris            ###   ########.fr       */
+/*   Updated: 2022/03/17 18:42:40 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char **ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	ret = (char **) malloc(sizeof(char *) * (count_malloc(s, c) + 1));
+	if (!ret)
+		return (NULL);
 //	printf("\n%ld\n", count_malloc(s, c) + 1);
 	start = 0;
 	i = 0;
@@ -64,9 +66,9 @@ char **ft_split(char const *s, char c)
 		while (s[start] == c)
 			start++;
 		ret[i] = (char *) malloc(sizeof(char) * (count_str((s + start), c) + 1));
-		if (!ret)
+		if (!ret[i])
 			return (NULL);
-//		printf("\n%ld\n", count_str((s + start), c));
+//		printf("\n%ld\n", count_str((s + start), c) + 1);
 		j = 0;
 		while (s[start] != c && s[start])
 		{
@@ -74,11 +76,24 @@ char **ft_split(char const *s, char c)
 			start++;
 			j++;
 		}
-		ret[i][j] = '\0';
+		if (j != 0)
+			ret[i][j] = '\0';
 //		printf("\n%s\n", ret[i]);
 		i++;
 	}
-	ret[i] = NULL;
+	if (s[start - 1] != c)
+	{
+		ret[i] = (char *) malloc(sizeof(char));
+		if (!ret[i])
+			return (NULL);
+		ret[i] = NULL;
+//		printf("\n%s\n", ret[i]);
+//		printf("\n%ld\n", count_str((s + start), c) + 1);
+		return (ret);
+	}
+//	printf("\n%lu\n", i - 1);
+	ret[i - 1] = NULL;
+//	printf("\n%s\n", ret[i - 1]);
 	return (ret);
 }
 
