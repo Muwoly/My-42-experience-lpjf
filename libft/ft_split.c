@@ -3,14 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:09:35 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/17 18:42:40 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:22:14 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+// static size_t	count_malloc(char const *s, char c)
+// {
+// 	size_t	i;
+// 	size_t	count;
+
+// 	i = 0;
+// 	count = 0;
+// 	if (c == 0)
+// 		return (1);
+// 	while (s[i])
+// 	{
+// 		while (s[i] != c)
+// 		{
+// 			i++;
+// 			if (s[i] == c || s[i] == '\0')
+// 			{
+// 				count++;
+// 				break;
+// 			}
+// 		}
+// 		if (s[i] == c)
+// 			i++;
+// 	}
+// 	return (count);
+// }
+
+// static size_t	count_str(char const *s, char c)
+// {
+// 	size_t	i;
+
+// 	i = 0;
+// 	while (s[i] != c && s[i])
+// 		i++;
+// 	return (i);
+// }
+
+// static char *create_str(char *ret, char const *s, size_t start, size_t end)
+// {
+// 	size_t i;
+
+// 	i = 0;
+// 	if (end == start)
+// 	{
+// 		ret = (char *) malloc(sizeof(char));
+// 		if (!ret)
+// 			return (0);
+// 		ret = NULL;
+// 		return (ret);
+// 	}
+// 	ret = (char *) malloc(sizeof(char) * (end - start + 1));
+// 	if (!ret)
+// 		return (0);
+// 	while (start < end)
+// 	{
+// 		ret[i] = s[start];
+// 		i++;
+// 		start++;
+// 	}
+// 	ret[i] = '\0';
+// //	printf("\n%li\n", i);
+// 	return (ret);
+// }
+
+// char **ft_split(char const *s, char c)
+// {
+// 	char 	**ret;
+// 	size_t	start;
+// 	size_t	end;
+// 	size_t	i;
+// 	size_t	nb_malloc;
+
+// 	if (!s)
+// 		return (0);
+// 	nb_malloc = count_malloc(s, c) + 1;
+// 	ret = (char **) malloc(sizeof(char *) * nb_malloc);
+// 	if (!ret)
+// 		return (0);
+// 	printf("\n%li\n", nb_malloc);
+// 	start = 0;
+// 	i = 0;
+// 	while (i < nb_malloc)
+// 	{
+// 		while (s[start] == c)
+// 			start++;
+// 		end = count_str(s + start, c) + start;
+// 		// printf("\n%li\n", count_str(s + start, c));
+// 		// printf("\n%li\n", start);
+// 		// printf("\n%li\n", end);
+// 		ret[i] = create_str(ret[i], s, start, end);
+// 		while (s[start] != c)
+// 			start++;
+// 		i++;
+// 	}
+// 	return (ret);
+// }
+
 
 static size_t	count_malloc(char const *s, char c)
 {
@@ -54,21 +151,21 @@ char **ft_split(char const *s, char c)
 	size_t	j;
 
 	if (!s)
-		return (NULL);
+		return (0);
 	ret = (char **) malloc(sizeof(char *) * (count_malloc(s, c) + 1));
 	if (!ret)
-		return (NULL);
-//	printf("\n%ld\n", count_malloc(s, c) + 1);
+		return (0);
 	start = 0;
 	i = 0;
 	while (s[start])
 	{
 		while (s[start] == c)
+		{
 			start++;
+		}
 		ret[i] = (char *) malloc(sizeof(char) * (count_str((s + start), c) + 1));
 		if (!ret[i])
-			return (NULL);
-//		printf("\n%ld\n", count_str((s + start), c) + 1);
+			return (0);
 		j = 0;
 		while (s[start] != c && s[start])
 		{
@@ -78,26 +175,19 @@ char **ft_split(char const *s, char c)
 		}
 		if (j != 0)
 			ret[i][j] = '\0';
-//		printf("\n%s\n", ret[i]);
 		i++;
 	}
 	if (s[start - 1] != c)
 	{
-		ret[i] = (char *) malloc(sizeof(char));
+		ret[i] = (char *) malloc(sizeof(char) * 1);
 		if (!ret[i])
-			return (NULL);
-		ret[i] = NULL;
-//		printf("\n%s\n", ret[i]);
-//		printf("\n%ld\n", count_str((s + start), c) + 1);
+			return (0);
+		ret[i] = 0;
 		return (ret);
 	}
-//	printf("\n%lu\n", i - 1);
-	ret[i - 1] = NULL;
-//	printf("\n%s\n", ret[i - 1]);
+	ret[i - 1] = 0;
 	return (ret);
 }
-
-
 
 
 // char	**ft_split(char const *s, char c)
