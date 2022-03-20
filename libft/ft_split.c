@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:09:35 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/18 12:22:14 by loris            ###   ########.fr       */
+/*   Updated: 2022/03/20 17:04:58 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ static size_t	count_malloc(char const *s, char c)
 
 	i = 0;
 	count = 0;
+	if (c == 0)
+		c = 1;
 	while (s[i])
 	{
 		while (s[i] != c)
@@ -157,12 +159,10 @@ char **ft_split(char const *s, char c)
 		return (0);
 	start = 0;
 	i = 0;
-	while (s[start])
+	while (i < count_malloc(s, c))
 	{
 		while (s[start] == c)
-		{
 			start++;
-		}
 		ret[i] = (char *) malloc(sizeof(char) * (count_str((s + start), c) + 1));
 		if (!ret[i])
 			return (0);
@@ -177,15 +177,7 @@ char **ft_split(char const *s, char c)
 			ret[i][j] = '\0';
 		i++;
 	}
-	if (s[start - 1] != c)
-	{
-		ret[i] = (char *) malloc(sizeof(char) * 1);
-		if (!ret[i])
-			return (0);
-		ret[i] = 0;
-		return (ret);
-	}
-	ret[i - 1] = 0;
+	ret[i] = 0;
 	return (ret);
 }
 
