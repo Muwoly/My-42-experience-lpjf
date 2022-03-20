@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 15:59:54 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/15 15:14:13 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/20 23:33:15 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ static void	putnbr(char *ret, int i, int n)
 	}
 }
 
+static char	*create_malloc(int i, int n)
+{
+	char	*ret;
+
+	ret = (char *) malloc(sizeof(char) * i);
+	if (ret == NULL)
+		return (NULL);
+	if (n == -2147483648)
+		ft_strlcpy(ret, "-2147483648", 12);
+	else if (n == 0)
+		ft_strlcpy(ret, "0", 2);
+	return (ret);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*ret;
@@ -47,33 +61,19 @@ char	*ft_itoa(int n)
 
 	i = count_nb(n);
 	if (n == -2147483648)
-	{
-		ret = (char *) malloc(sizeof(char) * 12);
-		if (ret == NULL)
-			return (NULL);
-		ft_strlcpy(ret, "-2147483648", 12);
-	}
+		ret = create_malloc(12, n);
 	else if (n < 0)
 	{
-		ret = (char *) malloc(sizeof(char) * (i + 2));
-		if (ret == NULL)
-			return (NULL);
+		ret = create_malloc(i + 2, n);
 		ret[0] = '-';
 		putnbr(ret, i + 1, n * -1);
 		ret[i + 1] = '\0';
 	}
 	else if (n == 0)
-	{
-		ret = (char *) malloc(sizeof(char) * 2);
-		if (ret == NULL)
-			return (NULL);
-		ft_strlcpy(ret, "0", 2);
-	}
+		ret = create_malloc(2, n);
 	else
 	{
-		ret = (char *) malloc(sizeof(char) * (i + 1));
-		if (ret == NULL)
-			return (NULL);
+		ret = create_malloc(i + 1, n);
 		putnbr(ret, i, n);
 		ret[i] = '\0';
 	}

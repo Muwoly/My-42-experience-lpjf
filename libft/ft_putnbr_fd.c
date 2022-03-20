@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 17:53:01 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/10 14:09:13 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/20 23:04:18 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	putnbr_fd(int n, int fd)
 {
 	char	p;
 
-		if (n < 0)
+	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
 		n = n * -1;

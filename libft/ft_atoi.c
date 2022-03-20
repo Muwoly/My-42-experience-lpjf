@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:11:10 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/15 19:31:56 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/20 23:04:33 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,3 @@ long long	ft_atoi(const char *nptr)
 	}
 	return (nbr * minus);
 }
-// {
-// 	int	i;
-// 	int	res;
-// 	int	sign;
-
-// 	i = 0;
-// 	res = 0;
-// 	sign = 1;
-// 	while (nptr[i] == ' ' || nptr[i] == '-')
-// 	{
-// 		if (nptr[i] == '-')
-// 		{
-// 			sign = -1;
-// 			i++;
-// 			break ;
-// 		}
-// 	}
-// 	while (nptr[i] && (nptr[i] >= '0' && nptr[i] <= '9'))
-// 	{
-// 		res = res * 10 + (int) nptr[i] - 48;
-// 		i++;
-// 	}
-// 	return (res * sign);
-// }

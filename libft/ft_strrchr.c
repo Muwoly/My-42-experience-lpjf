@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 11:36:48 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/07 17:49:08 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/03/20 23:05:50 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	check_after is a boolean function that returns true (1)
-	if s[0] is the last occurence,
-	and false (0) if s[0] is not the last occurence.
-*/
 
 static int	check_after(char *s)
 {
