@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: loris <loris@student.42.fr>                +#+  +:+       +#+         #
+#    By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/07 14:54:38 by lpenelon          #+#    #+#              #
-#    Updated: 2022/03/14 19:32:54 by loris            ###   ########.fr        #
+#    Updated: 2022/03/21 14:29:37 by lpenelon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,14 @@ BONUS_OBJS		= $(BONUS:.c=.o)
 CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
+RUN				= ar rcs
 
 NAME			= libft.a
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS) 
-				ar rcs $(NAME) $(OBJS)
+				$(RUN) $(NAME) $(OBJS)
 
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)
@@ -47,4 +48,4 @@ fclean:			clean
 re:				fclean $(NAME)
 
 bonus:			$(OBJS) $(BONUS_OBJS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+				$(RUN) $(NAME) $(OBJS) $(BONUS_OBJS)
