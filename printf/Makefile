@@ -6,13 +6,14 @@
 #    By: loris <loris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:57:47 by loris             #+#    #+#              #
-#    Updated: 2022/03/29 18:05:12 by loris            ###   ########.fr        #
+#    Updated: 2022/04/13 18:50:33 by loris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRCS =	srcs/ft_printf.c \
+		srcs/ft_printf_funcs1.c
 
 OBJS = $(SRCS:.c=.o)
 
