@@ -30,12 +30,12 @@ size_t  ft_printpointer(void *i)
     // https://forum.arduino.cc/t/need-to-print-pointer-address-to-uart-without-using-printf-or-sprintf/56789/3
 }
 
-size_t	ft_printi(int n)
+size_t	ft_printid(int n)
 {
 	int		i;
 	int		tmp;
 
-	ft_putnbri_fd(n, 1);
+	ft_putnbr_fd(n, 1);
 	i = 0;
 	tmp = n;
 	if (n < 0)
@@ -55,11 +55,11 @@ size_t	ft_printi(int n)
 	return (i);
 }
 
-size_t	ft_printd(unsigned int n)
+size_t	ft_printu(unsigned int n)
 {
 	int		i;
 
-	ft_putnbrd_fd(n, 1);
+	ft_putnbru_fd(n, 1);
 	if (n == 0)
 		return (1);
 	i = 0;

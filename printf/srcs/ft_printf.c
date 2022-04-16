@@ -31,11 +31,11 @@ static size_t	dispatch(const char s, va_list args)
 	// else if (s == 'p')
 	// 	ret += ft_printpointer(va_arg(args, void *));
 	else if (s == 'd')
-		ret += ft_printd(va_arg(args, unsigned int));
+		ret += ft_printid(va_arg(args, int));
 	else if (s == 'i')
-		ret += ft_printi(va_arg(args, int));
-	// else if (s == 'u')
-	// 	ret += ft_print(va_arg(args, int));
+		ret += ft_printid(va_arg(args, int));
+	else if (s == 'u')
+		ret += ft_printu(va_arg(args, unsigned int));
 	// else if (s == 'x')
 	// 	ret += ft_print(va_arg(args, int));
 	// else if (s == 'X')

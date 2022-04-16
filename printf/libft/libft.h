@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 14:35:48 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/29 18:05:05 by loris            ###   ########.fr       */
+/*   Updated: 2022/04/15 13:03:14 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		ft_putchar_fd(const char c, int fd);
 void		ft_putstr_fd(const char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+void		ft_putnbru_fd(unsigned int n, int fd);
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 int			ft_lstsize(t_list *lst);

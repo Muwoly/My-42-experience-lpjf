@@ -19,7 +19,7 @@
 int     ft_printf(const char *string, ...);
 size_t	ft_printstr(char *str);
 size_t  ft_printpointer(void *i);
-size_t	ft_printi(int n);
-size_t	ft_printd(unsigned int n);
+size_t	ft_printid(int n);
+size_t	ft_printu(unsigned int n);
 
 #endif
