@@ -23,11 +23,14 @@ size_t	ft_printstr(char *str)
 	return (ft_strlen(str));
 }
 
-size_t  ft_printpointer(void *i)
+size_t	ft_printpointer(void *i)
 {
-    write(1, &i, 1);
-    return (1);
-    // https://forum.arduino.cc/t/need-to-print-pointer-address-to-uart-without-using-printf-or-sprintf/56789/3
+	// char	*ptr;
+	return ((size_t) i);
+	// ptr = (char *)i;
+	
+	// return (ft_strlen(i));
+	// https://forum.arduino.cc/t/need-to-print-pointer-address-to-uart-without-using-printf-or-sprintf/56789/3
 }
 
 size_t	ft_printid(int n)
@@ -51,7 +54,6 @@ size_t	ft_printid(int n)
 		return (i + 1);
 	else if (tmp == 0)
 		return (1);
-
 	return (i);
 }
 

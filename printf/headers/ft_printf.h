@@ -16,10 +16,12 @@
 # include "libft.h"
 # include <stdarg.h>
 
-int     ft_printf(const char *string, ...);
+int		ft_printf(const char *string, ...);
 size_t	ft_printstr(char *str);
-size_t  ft_printpointer(void *i);
+size_t	ft_printpointer(void *i);
 size_t	ft_printid(int n);
 size_t	ft_printu(unsigned int n);
+size_t	ft_printx(int n, char *base);
+size_t	ft_printchar(int c);
 
 #endif
