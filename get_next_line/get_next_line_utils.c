@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 17:21:53 by loris             #+#    #+#             */
-/*   Updated: 2022/05/09 12:10:58 by loris            ###   ########.fr       */
+/*   Created: 2022/04/26 14:17:13 by loris             #+#    #+#             */
+/*   Updated: 2022/04/26 14:41:42 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "get_next_line.h"
 
-# include "libft.h"
-# include <stdarg.h>
+int	ft_strlen(char *s)
+{
+	int	i;
 
-int		ft_printf(const char *string, ...);
-size_t	ft_printstr(char *str);
-size_t	ft_printpointer(unsigned long int i);
-size_t	ft_printid(int n);
-size_t	ft_printu(unsigned int n);
-size_t	ft_printx(int n, char *base);
-size_t	ft_printchar(int c);
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

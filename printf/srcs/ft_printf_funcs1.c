@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:48:26 by loris             #+#    #+#             */
-/*   Updated: 2022/04/15 13:00:18 by loris            ###   ########.fr       */
+/*   Updated: 2022/05/09 13:42:16 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,29 @@ size_t	ft_printstr(char *str)
 	return (ft_strlen(str));
 }
 
-size_t	ft_printpointer(void *i)
+int	convert(unsigned long int i, int count)
 {
-	// char	*ptr;
-	return ((size_t) i);
-	// ptr = (char *)i;
-	
-	// return (ft_strlen(i));
-	// https://forum.arduino.cc/t/need-to-print-pointer-address-to-uart-without-using-printf-or-sprintf/56789/3
+	if (i > 0)
+	{
+		count = convert(i / 16, count + 1);
+		ft_putchar_fd("0123456789abcdef"[i % 16], 1);
+	}
+	return (count);
+}
+
+long unsigned int	ft_printpointer(unsigned long int i)
+{
+	int	count;
+
+	count = 2;
+	if (i == 0)
+	{
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
+	ft_putstr_fd("0x", 1);
+	count = count + convert(i, 0);
+	return (count);
 }
 
 size_t	ft_printid(int n)
