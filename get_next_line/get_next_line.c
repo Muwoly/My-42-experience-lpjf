@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 15:21:43 by loris             #+#    #+#             */
-/*   Updated: 2022/05/13 12:10:13 by loris            ###   ########.fr       */
+/*   Updated: 2022/05/30 18:28:44 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,18 @@ char	*get_next_line(int fd)
 
 	result = 1;
 	i = 0;
-	while (result != 0 && result != '\n')
+	result = read(fd, buf, 1);
+	if (result == -1)
+		return (NULL);
+	if (result == 0 || result == '\n')
+		return (NULL);
+	if (result == 1)
 	{
-		result = read(fd, buf, 1);
-		if (result == -1)
-			return (NULL);
-		if (result == 0 || result == '\n')
-			break ;
-		if (result == 1)
-			tmp[i] = buf[0];
-		i++;
+		while (buf[i] && buf[i] == '\n')
+		{
+			tmp[i] = buf[i];
+			i++;
+		}
 	}
 	ret = (char *) malloc (sizeof(char) * ft_strlen(tmp));
 	ft_memcpy(ret, tmp, ft_strlen(tmp));

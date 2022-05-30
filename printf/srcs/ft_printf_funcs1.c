@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_funcs1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:48:26 by loris             #+#    #+#             */
-/*   Updated: 2022/05/09 13:42:16 by loris            ###   ########.fr       */
+/*   Updated: 2022/05/25 15:00:34 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_printstr(char *str)
 {
 	if (str == NULL)
 	{
-		write(1, &"(null)", 6);
+		write(1, "(null)", 6);
 		return (6);
 	}
 	ft_putstr_fd(str, 1);
@@ -40,8 +40,8 @@ long unsigned int	ft_printpointer(unsigned long int i)
 	count = 2;
 	if (i == 0)
 	{
-		ft_putstr_fd("(nil)", 1);
-		return (5);
+		ft_putstr_fd("0x0", 1);
+		return (3);
 	}
 	ft_putstr_fd("0x", 1);
 	count = count + convert(i, 0);
