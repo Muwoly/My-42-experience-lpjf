@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 15:21:43 by loris             #+#    #+#             */
-/*   Updated: 2022/06/03 13:45:23 by loris            ###   ########.fr       */
+/*   Updated: 2022/06/05 16:52:18 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 char	*get_next_line(int fd)
 {
 	char		*ret;
+	char		tmp[BUFFER_SIZE + 1];
 	int			result;
 
-	ret = (char *) malloc (sizeof(char) * 30);
-	result = read(fd, ret, BUFFER_SIZE);
-	ret[29] = '\0';
+	result = read(fd, tmp, BUFFER_SIZE);
 	if (result == -1 || result == 0)
 		return (NULL);
+	ret = ft_strdup(tmp);
 	return (ret);
 }
+
+// When buffer is reading whole file.
+// only way to then return the next line is to have a static variable (variable that keep it's value once the function is called again)
+// store in the static variable the next lines
+// then when called, check if file has already been read. If so, send next line and remove it from the static variable
+// if not --> add the read part to the static variable.
