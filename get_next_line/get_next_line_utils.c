@@ -6,7 +6,7 @@
 /*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:17:13 by loris             #+#    #+#             */
-/*   Updated: 2022/06/05 14:13:21 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:41:16 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,41 @@ char	*ft_strdup(const char *s)
 		return (NULL);
 	ft_memcpy(a, s, i);
 	return (a);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (dstsize == 0)
+		return (ft_strlen((char *) src));
+	while (src[i] != '\0' && i < dstsize - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen((char *) src));
+}
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t		i;
+	size_t		n;
+	size_t		dstcnt;
+
+	n = ft_strlen(dst);
+	dstcnt = n;
+	i = 0;
+	if (dstsize == 0)
+		return (ft_strlen((char *) src));
+	while (src[i] != '\0' && n < dstsize - 1)
+	{
+		dst[n++] = src[i++];
+	}
+	dst[n] = '\0';
+	if (dstcnt < dstsize)
+		return (dstcnt + ft_strlen((char *) src));
+	return (dstsize + ft_strlen((char *) src));
 }

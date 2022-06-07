@@ -1,6 +1,2 @@
-Ceci
-est
-un
+ok
 test
-voila
-kiss
