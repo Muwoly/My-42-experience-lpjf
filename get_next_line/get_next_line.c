@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:08:51 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/06/07 19:05:17 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/06/10 10:08:09 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "get_next_line.h"
 
-char	*save(char *store, char *tmp)
-{
-	int	i;
-	i = ft_strlcat(store, tmp, (ft_strlen(store) + ft_strlen(tmp) + 1));
-	return (store);
-}
-
-char	*delete_first_line(char *store)
+void	delete_first_line(char *store)
 {
 	int		i;
 	int		n;
@@ -29,6 +21,8 @@ char	*delete_first_line(char *store)
 	n = 0;
 	while (store[i] != '\n' && store[i] != '\0')
 		i++;
+	if (store[i] == '\n')
+		i++;
 	while (store[i] != '\0')
 	{
 		store[n] = store[i];
@@ -36,7 +30,6 @@ char	*delete_first_line(char *store)
 		i++;
 	}
 	store[n] = '\0';
-	return (store);
 }
 
 char	*get_first_line(char *store)
@@ -68,20 +61,26 @@ char	*get_next_line(int fd)
 	tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (tmp == NULL)
 		return (NULL);
-	printf("1\n");
 	result = read(fd, tmp, BUFFER_SIZE);
-	printf("2\n");
+	if (!store)
+	{
+		store = malloc(sizeof(char) * (BUFFER_SIZE + 1));	// Should be bigger
+		if (store == NULL)
+			return (NULL);
+	}
 	if (result == -1)
 		return (NULL);
 	else if (result > 0)
-		store = save(store, tmp);
-	printf("3\n");
+	{
+		ft_strlcat(store, tmp, (ft_strlen(store) + ft_strlen(tmp) + 1));
+	}
 	free(tmp);
-	printf("4\n");
 	if (result == 0 && store[0] == '\0')
 		return ("(null)");
 	ret = get_first_line(store);
-	store = delete_first_line(store);
+	delete_first_line(store);
+	if (store[0] == '\0')
+		free(store);
 	return (ret);
 }
 
