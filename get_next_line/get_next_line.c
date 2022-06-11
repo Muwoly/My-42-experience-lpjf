@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:08:51 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/06/10 10:08:09 by loris            ###   ########.fr       */
+/*   Updated: 2022/06/11 23:04:59 by lpenelon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*get_next_line(int fd)
 		return ("(null)");
 	ret = get_first_line(store);
 	delete_first_line(store);
-	if (store[0] == '\0')
+	if (store != NULL)
 		free(store);
 	return (ret);
 }
