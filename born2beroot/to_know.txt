@@ -1,0 +1,16 @@
+why choosed Debian
+
+What is the difference: 
+- aptitude vs apt
+
+What is:
+- SELinux
+- AppArmor
+
+root: lpenelon42
+root password: Abcde12345
+Full name
+Username: lpenelon
+password: 12345Abcde
+
+check the two commands in subject
