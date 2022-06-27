@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:08:51 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/06/27 13:04:08 by loris            ###   ########.fr       */
+/*   Updated: 2022/06/27 14:30:51 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ int	read_file(int fd, char *store)
 	{
 		i = read(fd, tmp, BUFFER_SIZE);
 		if (i == -1)
+		{
+			free(tmp);
 			return (-1);
+		}
 		if (i == 0)
 			break ;
 		ft_strlcat(store, tmp, (ft_strlen(store) + ft_strlen(tmp) + 1));
