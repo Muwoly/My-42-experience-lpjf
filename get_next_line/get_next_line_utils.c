@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:17:13 by loris             #+#    #+#             */
-/*   Updated: 2022/06/08 16:19:37 by loris            ###   ########.fr       */
+/*   Updated: 2022/06/27 10:41:37 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,29 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	if (dstcnt < dstsize)
 		return (dstcnt + ft_strlen((char *) src));
 	return (dstsize + ft_strlen((char *) src));
+}
+
+void	ft_bzero(void *b, size_t len)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *) b;
+	while (i < (int) len)
+	{
+		str[i] = '\0';
+		i++;
+	}
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void		*ret;
+
+	ret = (void *) malloc(nmemb * size);
+	if (ret == NULL)
+		return (NULL);
+	ft_bzero(ret, nmemb * size);
+	return (ret);
 }

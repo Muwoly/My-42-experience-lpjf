@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:08:51 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/06/11 23:04:59 by lpenelon         ###   ########.fr       */
+/*   Updated: 2022/06/27 13:04:08 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,43 @@ char	*get_first_line(char *store)
 	return (ret);
 }
 
+int	read_file(int fd, char *store)
+{
+	int		i;
+	char	*tmp;
+
+	tmp = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
+	if (tmp == NULL)
+		return (0);
+	i = 1;
+	while (i > 0)
+	{
+		i = read(fd, tmp, BUFFER_SIZE);
+		if (i == -1)
+			return (-1);
+		if (i == 0)
+			break ;
+		ft_strlcat(store, tmp, (ft_strlen(store) + ft_strlen(tmp) + 1));
+		ft_bzero(tmp, (sizeof(char) * (BUFFER_SIZE + 1)));
+	}
+	free (tmp);
+	return (0);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*store;
 	char		*ret;
-	char		*tmp;
-	int			result;
 
-	tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (tmp == NULL)
-		return (NULL);
-	result = read(fd, tmp, BUFFER_SIZE);
 	if (!store)
 	{
-		store = malloc(sizeof(char) * (BUFFER_SIZE + 1));	// Should be bigger
+		store = ft_calloc(1, 16711568);
 		if (store == NULL)
 			return (NULL);
+		if (read_file(fd, store) == -1)
+			return (NULL);
 	}
-	if (result == -1)
-		return (NULL);
-	else if (result > 0)
-	{
-		ft_strlcat(store, tmp, (ft_strlen(store) + ft_strlen(tmp) + 1));
-	}
-	free(tmp);
-	if (result == 0 && store[0] == '\0')
+	if (store[0] == '\0')
 		return ("(null)");
 	ret = get_first_line(store);
 	delete_first_line(store);
