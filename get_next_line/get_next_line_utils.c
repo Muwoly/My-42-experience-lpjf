@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:17:13 by loris             #+#    #+#             */
-/*   Updated: 2022/06/27 10:41:37 by loris            ###   ########.fr       */
+/*   Updated: 2022/06/28 21:40:01 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,36 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	ft_bzero(ret, nmemb * size);
 	return (ret);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*ret;
+	int		total_len;
+
+	if (!s1 || !s2)
+		return (0);
+	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	ret = (char *) malloc(total_len);
+	if (ret == NULL)
+		return (NULL);
+	ft_strlcpy(ret, s1, total_len);
+	ft_strlcat(ret, s2, total_len);
+	return (ret);
+}
+
+char	*ft_strchr(char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *) &s[i]);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *) &s[i]);
+	return (0);
 }

@@ -6,75 +6,116 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:08:51 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/06/27 14:30:51 by loris            ###   ########.fr       */
+/*   Updated: 2022/07/04 18:45:54 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	delete_first_line(char *store)
-{
-	int		i;
-	int		n;
+// void	delete_first_line(char *store)
+// {
+// 	int		i;
+// 	int		n;
 
-	i = 0;
-	n = 0;
-	while (store[i] != '\n' && store[i] != '\0')
-		i++;
-	if (store[i] == '\n')
-		i++;
-	while (store[i] != '\0')
+// 	i = 0;
+// 	n = 0;
+// 	while (store[i] != '\n' && store[i] != '\0')
+// 		i++;
+// 	if (store[i] == '\n')
+// 		i++;
+// 	while (store[i] != '\0')
+// 	{
+// 		store[n] = store[i];
+// 		n++;
+// 		i++;
+// 	}
+// 	store[n] = '\0';
+// 	if (store[0] == '\0')
+// 		free(store);
+// }
+
+char	*delete_first_line(char *store)
+{
+	char	*tmp;
+	char	*tmp2;
+
+	if (store[0] == '\0')
 	{
-		store[n] = store[i];
-		n++;
-		i++;
+		free(store);
+		return (NULL);
 	}
-	store[n] = '\0';
+	tmp = ft_strchr(store, '\n');
+	if (tmp == NULL)
+	{
+		free(store);
+		free(tmp);
+		return (NULL);
+	}
+	tmp2 = malloc(sizeof(char) * ft_strlen(tmp));
+	ft_strlcpy(tmp2, tmp + 1, ft_strlen(tmp));
+	free(store);
+	return (tmp2);
 }
 
 char	*get_first_line(char *store)
 {
 	char	*ret;
-	char	tmp2[BUFFER_SIZE + 1];
+	char	*tmp;
 	int		i;
 
 	i = 0;
+	tmp = malloc(sizeof(char) * (ft_strlen(store) + 2));
+	if (!tmp)
+		return (NULL);
 	while (store[i] != '\n' && store[i] != '\0')
 	{
-		tmp2[i] = store[i];
+		tmp[i] = store[i];
 		i++;
 	}
-	tmp2[i] = '\0';
-	ret = ft_strdup(tmp2);
-	if (ret == NULL)
-		return (NULL);
+	if (store[i] == '\n')
+	{
+		tmp[i] = '\n';
+		tmp[i + 1] = '\0';
+	}
+	if (store[i] == '\0')
+		tmp[i] = '\0';
+	ret = ft_strdup(tmp);
+	free(tmp);
 	return (ret);
 }
 
-int	read_file(int fd, char *store)
+// must read and add at every call. not ok to store everything whatsoever
+char	*read_file(int fd, char *store)
 {
 	int		i;
+	char	*buff;
 	char	*tmp;
 
-	tmp = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
-	if (tmp == NULL)
-		return (0);
-	i = 1;
-	while (i > 0)
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+		return (NULL);
+	store = malloc(sizeof(char));
+	if (!store)
+		return (NULL);
+	store[0] = '\0';
+	i = BUFFER_SIZE;
+	while (i == BUFFER_SIZE)
 	{
-		i = read(fd, tmp, BUFFER_SIZE);
+		i = read(fd, buff, BUFFER_SIZE);
 		if (i == -1)
 		{
-			free(tmp);
-			return (-1);
+			free(buff);
+			free(store);
+			return (NULL);
 		}
-		if (i == 0)
-			break ;
-		ft_strlcat(store, tmp, (ft_strlen(store) + ft_strlen(tmp) + 1));
-		ft_bzero(tmp, (sizeof(char) * (BUFFER_SIZE + 1)));
+		buff[i] = '\0';
+		tmp = ft_strdup(store);
+		free(store);
+		store = ft_strjoin(tmp, buff);
+		free(tmp);
 	}
-	free (tmp);
-	return (0);
+	free (buff);
+	return (store);
 }
 
 char	*get_next_line(int fd)
@@ -82,20 +123,13 @@ char	*get_next_line(int fd)
 	static char	*store;
 	char		*ret;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
 	if (!store)
-	{
-		store = ft_calloc(1, 16711568);
-		if (store == NULL)
-			return (NULL);
-		if (read_file(fd, store) == -1)
-			return (NULL);
-	}
-	if (store[0] == '\0')
-		return ("(null)");
+		store = read_file(fd, store);
 	ret = get_first_line(store);
-	delete_first_line(store);
-	if (store != NULL)
-		free(store);
+	if (store)
+		store = delete_first_line(store);
 	return (ret);
 }
 
