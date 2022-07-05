@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:17:13 by loris             #+#    #+#             */
-/*   Updated: 2022/06/28 21:40:01 by loris            ###   ########.fr       */
+/*   Updated: 2022/07/05 11:48:45 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,31 +89,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (dstsize + ft_strlen((char *) src));
 }
 
-void	ft_bzero(void *b, size_t len)
-{
-	int		i;
-	char	*str;
-
-	i = 0;
-	str = (char *) b;
-	while (i < (int) len)
-	{
-		str[i] = '\0';
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void		*ret;
-
-	ret = (void *) malloc(nmemb * size);
-	if (ret == NULL)
-		return (NULL);
-	ft_bzero(ret, nmemb * size);
-	return (ret);
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ret;
@@ -143,5 +118,19 @@ char	*ft_strchr(char *s, int c)
 	}
 	if (s[i] == (char)c)
 		return ((char *) &s[i]);
+	return (0);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && i < len)
+	{
+		if ((unsigned char)s1[i] != *(unsigned char *)(s2 + i))
+			return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
+		i++;
+	}
 	return (0);
 }

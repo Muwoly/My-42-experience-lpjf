@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 15:17:13 by loris             #+#    #+#             */
-/*   Updated: 2022/07/04 14:45:55 by loris            ###   ########.fr       */
+/*   Updated: 2022/07/04 22:23:08 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		ft_strncmp(const char *s1, const char *s2, size_t len);
 int		main(void);
 
 #endif
